@@ -31,7 +31,7 @@ router.post('/allcourse', async (req, res) => {
 		if (result.error) {
 			res.send(common.sendResponse(false, 0, 'Some error occurred', null, 500));
 		} else {
-			let message = 'Product Found!';
+			let message = 'Courses Found!';
 			res.send(common.sendResponse(true, 1, message, result, 0));
 		}
 	} catch(e) {

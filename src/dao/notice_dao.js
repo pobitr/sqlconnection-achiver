@@ -45,3 +45,63 @@ module.exports.allNotice  = (data) => {
 		}
 	});
 }
+//
+module.exports.noticeDetails = (data) => {
+	return new Promise((resolve, reject) => {
+		try {
+            console.log(data)
+			var sql 	=	"select * from notice where id='"+data.id+"' AND is_delete=0";
+			db.connection.query(sql,async function (err, success){
+                if (err) {
+                    resolve(common.errorResolve(err))
+                } else {
+                    resolve(success)
+                }
+            });
+		} catch (e) {
+			console.log(e);
+			resolve('500');
+		}
+	});
+}
+//
+module.exports.noticeUpdate = (data) => {
+	return new Promise((resolve, reject) => {
+		try {
+            console.log(data)
+			var sql 	= "UPDATE `notice` SET `noticeTitle`='"+data.noticeTitle+"',`noticeDesc`='"+data.noticeDesc+"' WHERE id='"+data.id+"' AND is_delete=0";
+				
+			db.connection.query(sql,async function (err, success){
+                if (err) {
+                    resolve(common.errorResolve(err))
+                } else {
+                    resolve(success)
+                }
+            });
+		} catch (e) {
+			console.log(e);
+			resolve('500');
+		}
+	});
+}
+//
+//
+module.exports.noticeDelete = (data) => {
+	return new Promise((resolve, reject) => {
+		try {
+            console.log(data)
+			var sql 	=	"UPDATE `notice` SET `is_delete`='1' WHERE id='"+data.id+"'";
+			console.log(sql)
+			db.connection.query(sql,async function (err, success){
+                if (err) {
+                    resolve(common.errorResolve(err))
+                } else {
+                    resolve(success)
+                }
+            });
+		} catch (e) {
+			console.log(e);
+			resolve('500');
+		}
+	});
+}
