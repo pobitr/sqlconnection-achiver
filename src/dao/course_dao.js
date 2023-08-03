@@ -44,3 +44,23 @@ module.exports.allcourse  = (data) => {
 		}
 	});
 }
+
+//
+module.exports.courseDetails = (data) => {
+	return new Promise((resolve, reject) => {
+		try {
+            console.log(data)
+			var sql 	=	"select * from course where id='"+data.id+"' AND is_delete=0";
+			db.connection.query(sql,async function (err, success){
+                if (err) {
+                    resolve(common.errorResolve(err))
+                } else {
+                    resolve(success)
+                }
+            });
+		} catch (e) {
+			console.log(e);
+			resolve('500');
+		}
+	});
+}
