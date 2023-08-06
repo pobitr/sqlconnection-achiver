@@ -64,3 +64,24 @@ module.exports.courseDetails = (data) => {
 		}
 	});
 }
+//
+//
+module.exports.courseDelete = (data) => {
+	return new Promise((resolve, reject) => {
+		try {
+            console.log(data)
+			var sql 	=	"UPDATE `course` SET `is_delete`='1' WHERE id='"+data.id+"'";
+			console.log(sql)
+			db.connection.query(sql,async function (err, success){
+                if (err) {
+                    resolve(common.errorResolve(err))
+                } else {
+                    resolve(success)
+                }
+            });
+		} catch (e) {
+			console.log(e);
+			resolve('500');
+		}
+	});
+}

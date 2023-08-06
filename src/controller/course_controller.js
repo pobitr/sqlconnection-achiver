@@ -56,3 +56,21 @@ router.post('/courseDetails', async (req, res) => {
         res.send(common.sendResponse(false, 0, 'Something went wrong. Please try again.', null, 1002));
 	}
 });
+
+//
+router.post('/courseDelete', async (req, res) => {
+	try{
+		
+		const result = await dao.courseDelete(req.body);
+		//console.log(result)
+		if (result.error) {
+			res.send(common.sendResponse(false, 0, 'Some error occurred', null, 500));
+		} else {
+			let message = 'Course has been Deleted!';
+			res.send(common.sendResponse(true, 1, message, result[0], 0));
+		}
+	} catch(e) {
+        console.log(e)
+        res.send(common.sendResponse(false, 0, 'Something went wrong. Please try again.', null, 1002));
+	}
+});
