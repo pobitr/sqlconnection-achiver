@@ -5,10 +5,12 @@ const router = express.Router();
 const admin = require('../controller/admin_controller')
 const course = require('../controller/course_controller')
 const notice = require('../controller/notice_controller')
+const user = require('../controller/user_controller')
 
 router.use('/admin', admin );
 router.use('/course', course);
 router.use('/notice', notice);
+router.use('/user', user);
 
 router.post('/upload',async (req,res)=>{
     try{
