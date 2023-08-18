@@ -6,11 +6,14 @@ const admin = require('../controller/admin_controller')
 const course = require('../controller/course_controller')
 const notice = require('../controller/notice_controller')
 const user = require('../controller/user_controller')
+const review = require('../controller/review_controller')
 
 router.use('/admin', admin );
 router.use('/course', course);
 router.use('/notice', notice);
 router.use('/user', user);
+router.use('/review', review);
+
 
 router.post('/upload',async (req,res)=>{
     try{

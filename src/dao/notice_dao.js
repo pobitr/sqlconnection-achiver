@@ -31,7 +31,7 @@ module.exports.allNotice  = (data) => {
 	return new Promise((resolve, reject) => {
 		try {
             console.log(data)
-			var sql 	=	"SELECT * FROM `notice` WHERE `is_delete`=0";
+			var sql 	=	"SELECT * FROM `notice` WHERE `is_delete`=0 ORDER BY `id` DESC";
 			db.connection.query(sql,async function (err, success){
                 if (err) {
                     resolve(common.errorResolve(err))
