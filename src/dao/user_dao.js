@@ -7,10 +7,6 @@ module.exports.addUser = (data) => {
 		try {
             console.log(data)
 			var sql 	="INSERT INTO `user`(`userName`, `userEmail`, `userPhone`, `userAge`, `UserPassword`) VALUES ('"+data.userName+"','"+data.userEmail+"','"+data.userPhone+"','"+data.userAge+"','"+data.UserPassword+"')";
-
-            
-            	
-			
 			db.connection.query(sql,function (err, success){
                 if (err) {
                     resolve(common.errorResolve(err))
@@ -37,6 +33,25 @@ module.exports.userLogin = (data) => {
                     resolve(common.errorResolve(err))
                 } else {
                     console.log(success)
+                    resolve(success)
+                }
+            });
+		} catch (e) {
+			console.log(e);
+			resolve('500');
+		}
+	});
+}
+//
+module.exports.allUser  = (data) => {
+	return new Promise((resolve, reject) => {
+		try {
+            console.log(data)
+			var sql 	=	"SELECT * FROM `user` WHERE `is_delete`=0 ORDER BY `id` DESC";
+			db.connection.query(sql,async function (err, success){
+                if (err) {
+                    resolve(common.errorResolve(err))
+                } else {
                     resolve(success)
                 }
             });
