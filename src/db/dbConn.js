@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
     // password : '',
     // database : 'achiver_edu'
     host     : 'sql6.freemysqlhosting.net',
-    user     : 'sql668785',
+    user     : 'sql6687853',
     password : 'GFhwzE2hVa',
     database : 'sql6687853'
   });
